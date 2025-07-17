@@ -1,62 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[나의 사랑 안에 거하라]</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" type="image/x-icon" href="img2/logo.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-  <!-- Open Graph 메타 태그 -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="나의 사랑 안에 거하라 : 대학청년 연합 수련회">
-  <meta property="og:description" content="2025-08/14~16 | 구미안디옥교회">
-  <meta property="og:image" content="img/meta.png"> 
-  <!--메타이미지 변경필요 -->
-  <meta property="og:url" content="https://abide-in-my-love.netlify.app/">
+    <!-- 링크복사, 위로가기 토글 아이콘 -->
+    <link rel="stylesheet" type="text/css" href="./src/framework.css" />
+    <!-- 로딩 -->
+    <link rel="stylesheet" type="text/css" href="./src/style.css" />
+    <!-- 전체형태 -->
+    <link rel="stylesheet" type="text/css" href="./src/slider.css" />
+    <link rel="stylesheet" href="./src/fade.css" />
+
+    <!-- 폰트어썸 -->
+    <script type="text/javascript" src="./src/jquery.js"></script>
+    <script type="text/javascript" src="./src/plugins.js"></script>
+    <script type="text/javascript" src="./src/underscore.js"></script>
+    <script type="text/javascript" src="./src/modernizr.custom.63321.js"></script>
+    <script type="text/javascript" src="./src/custom.js"></script>
+    <script charset="UTF-8" src="./src/kakao.js"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/${VERSION}/kakao.min.js" integrity="${INTEGRITY_VALUE}" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./src/fade.js"></script>
+    <script>
+        setTimeout(function () {
+            location.reload();
+        }, 900000); // 900000밀리초 = 900초후 페이지 새로고침
+    </script>
+
+    <meta property="og:image" content="img2/meta.png" />
+    <title>안디옥교회 여름성경학교</title>
+    <meta property="og:url" content="https://summer-bible-school-2025.netlify.app/" />
+    <meta property="og:title" content="안디옥교회 여름성경학교" />
+    <meta property="og:description" content="2025년 7/24(목)~26(토)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#000000" />
 </head>
 
-<body>
- <header id="header">
-  <div class="header-overlay">
-    <h2>나의 사랑 안에 <br>거하라</h2>
-    <p>abide in my love...</p>
-  </div>
-</header>
+<body class="is-not-ios" onload="showImage()">
+    <!-- 로딩 이미지 -->
+    <div id="preloader" class="preloader-light">
+        <div id="preload-spinner"></div>
+        <h1></h1>
+        <p>잠시만 기다려주세요</p>
+    </div>
 
-  
-  <div class="grid-container">
-    <input type="text" id="nameInput" placeholder="이름을 입력하세요 (e.g., 이찬희)" class="grid-item">
-    
-    <button id="grd8" class="grid-item" onclick="findTeam()">나의 조 찾기 🔍</button>
-    <button id="grd2" class="grid-item" onclick="findRoom()">나의 숙소 찾기 🏠</button>
-    <button id="grd3" class="grid-item" onclick="showAllTeams()">전체 조 보기 👥</button>
-    <button id="grd4" class="grid-item" onclick="showAllRooms()">전체 숙소표 보기 👨‍👩‍👧‍👦</button>
-    <button id="grd5" class="grid-item" onclick="showEmergency()">응급 연락망 📞</button>
-    <button id="grd6" class="grid-item" onclick="showSchedule()">일정 📅</button>
-    <button id="grd7" class="grid-item" onclick="showFood()">식단표 🍲</button>
-    <button id="grd8" class="grid-item" onclick="showResolution()">결단문 ✍️</button>
-  </div>
-  
-  <!-- output 영역 -->
-  <div class="grid-item results team-info" id="teamInfo"></div>
-  <div class="grid-item results room-info" id="roomInfo" style="display: none;"></div>
-  <div class="grid-item results team-list" id="allTeams"></div>
-  <div class="grid-item results all-rooms" id="allRooms" style="display: none;"></div>
-  <div class="grid-item results emergency-info" id="emergencyInfo"></div>
-  <div class="grid-item results schedule-info" id="scheduleInfo"></div>
-  <div class="grid-item results food-info" id="foodInfo" style="display: none;"></div>
-  <div class="grid-item results resolution-info" id="resolutionInfo"></div>
-  
-  <!-- footer -->
-  <footer>
-    <p>
-      &copy; 2025 나의 사랑 안에 거하라<br>
-      Designed with 🌿 by <br>
-      <a href="https://www.youtube.com/@hewilldoit">Antioch Church</a>
-    </p>
-  </footer>
-  
-  <!-- script파일 -->
-  <script src="script.js"></script>
+    <!-- body start -->
+    <div id="page-transitions" style="min-height: 592px">
+        <div class="page-content" style="transition: all 300ms ease 0s">
+            <div class="main-img" id="thisone">
+                <img id="background letter" src="img2/background.png" alt="background" />
+            </div>
+            <div>
+                <img class="first-part" src="img2/1.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part" src="img2/2.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part reveal" src="img2/3.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part reveal" src="img2/4.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part reveal" src="img2/5.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part reveal" src="img2/6.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part reveal" src="img2/7.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part reveal" src="img2/8.png" alt="" />
+            </div>
+            <div>
+                <img class="first-part reveal" src="img2/9.png" alt="" />
+            </div>
+
+
+
+            <div id="information" class="footer-socials" style="padding-top: 50px">
+                <a href="https://antiochi.org/ko" target="_blank" class="shadow-small icon icon-round no-border icon-xs">
+                    <img src="img2\antioch.png" class="sns-logo" />
+                </a>
+                <a href="https://www.youtube.com/@hewilldoit" target="_blank" class="shadow-small icon icon-round no-border icon-xs">
+                    <img src="img2\youtube-logo.png" class="sns-logo" />
+                </a>                
+                <a href="https://soundcloud.com/wzpjxy1a1xfk" target="_blank" class="shadow-small icon icon-round no-border icon-xs">
+                    <img src="img2\logo_soundcloud.jpg" class="sns-logo" />
+                </a>
+                <a href="https://www.instagram.com/antioch1k?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="shadow-small icon icon-round no-border icon-xs">
+                    <img src="./img2/insta.png" class="sns-logo" />
+                </a>
+            </div>
+
+            <div id="information2" style="width: 70%; margin-top: 30px">
+                <p class="copyText">
+                    ©&nbsp;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    Antioch, all rights reserved
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
